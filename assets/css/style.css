@@ -1,0 +1,22 @@
+body {
+    background-color: pink;
+}
+
+div {
+    background-color: aqua;
+    width: 75%;
+    margin: auto;
+    text-align: center; 
+}
+
+h1 {
+    font-size: 35px;
+}
+
+p {
+    font-size: 20px;
+}
+
+ul {
+    font-size: 25px;
+}
