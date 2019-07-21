@@ -5,6 +5,7 @@ body {
 div {
     background-color: aqua;
     width: 75%;
+    height: 70%;
     margin: auto;
     text-align: center; 
 }
@@ -24,4 +25,8 @@ input {
     background-color: teal;
     cursor: pointer;
     text-decoration: arial;
+}
+
+.container {
+    height: 90%;
 }
