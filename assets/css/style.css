@@ -17,6 +17,11 @@ p {
     font-size: 20px;
 }
 
-ul {
+input {
     font-size: 25px;
+    width: 500px;
+    height: 50px;
+    background-color: teal;
+    cursor: pointer;
+    text-decoration: arial;
 }

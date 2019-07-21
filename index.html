@@ -8,22 +8,25 @@
 </head>
 <body>
 
-    <div>
+    <div id="container">
 <br>
         <h1>THIS IS A TRIVIA GAME</h1>
 <br>
+<button id="play">play</button>
+<button id="pause">pause</button>
         <p>Time Remaining: <span>30 Seconds</span></p>
+<p></p>
+<form>
+<p>Here's a trivia question:</p>
 
-        <p>Here is a question to ask if I had a trivia question to ask?</p>
-
-        <ul>
-            <li>Option 1</li>
-            <li>Option 2</li>
-            <li>Option 3</li>
-            <li>Option 4</li>
-        </ul>
-<br>
+<input type="button" data-type="wrong" value="This is option 1"><br>
+<input type="button" data-type="correct" value="Option2"><br>
+<input type="button" data-type="wrong" value="and option 3"><br>  
+<input type="button" data-type="wrong" value="and option 4"><br> 
+</form>
     </div>
+
+    <p id="content"></p>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/app.js"></script>
