@@ -1,4 +1,4 @@
-var counter1 = 30;
+var counter1 = 10;
 console.log(counter1);
 
 var counter2 = 30;
@@ -59,14 +59,14 @@ var b = 0;
 
 
 function decreaseGifCounter(){
-
+   
 gifTime = setInterval(decreaseGifCounter, 1*1000);
 
     if (gifCounter > 0){
         gifCounter--;  
         console.log(gifCounter);
 
-    
+        
         // clearTimeout(gifTime);
     }
     else if (gifCounter == 0){
@@ -102,27 +102,52 @@ if (b == 0){
 
 }
 }
+
+function formCounter1(){
+
 var decreaseCounter1 = setInterval(function() {
     counter1--;
     $('#timerOne').text(counter1);
     // Display 'counter' wherever you want to display it.
+    
     if (counter1 == 0) {
+        console.log(counter1)
+        // clearFormCounter()
+        // replayFormCounter()
         // Display a login box
         clearInterval(decreaseCounter1);
+        // stopFormCounter;
     }
 }, 1000);
+}
+
+function formCounter2(){
+
+    var decreaseCounter2 = setInterval(function() {
+        counter2--;
+        $('#timerTwo').text(counter2);
+        // Display 'counter' wherever you want to display it.
+        if (counter2 == 0) {
+            // clearFormCounter()
+            // replayFormCounter()
+            // Display a login box
+            clearInterval(decreaseCounter2);
+            // stopFormCounter;
+        }
+    }, 1000);
+    }
 
 function formPage(){
 
 
 if (a == 0){
-decreaseCounter1;
+// formCounter();
     $('#one').show();
-
+formCounter1();
 }else if (a == 1){
-    decreaseCounter1;
+// formCounter();
     $('#two').show();
-
+formCounter1();
 }else if (a == 2){
     $('#three').show();
 }
@@ -142,8 +167,8 @@ $("input[type='button']").on('click', function(){
         $('#content').text('SUPER DUPER');
 
         // clearTimeout(timeOut1);
-        // clearTimeout(timeOut1);
-        clearInterval(decreaseCounter1);
+clearInterval(formCounter1);
+
         gifPage();
         a++;
     }
@@ -152,7 +177,8 @@ $("input[type='button']").on('click', function(){
         $('#content').text('incorrect')
         // clearInterval(timeOut1);
         // clearTimeout(timeOut);
-        clearInterval(decreaseCounter1);
+        clearInterval(formCounter1);
+        // clearInterval(formCounter2);
         gifPage();
         a++;
     }
