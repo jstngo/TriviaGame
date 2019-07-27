@@ -1,18 +1,14 @@
-var counter = 30;
-var gifCounter = 5;
+var counter = 30; //Form page timer
 
-// var nextCounter = 30;
+var gifCounter = 5; //Gif page timer
 
 var timer;
+
 var gifTimer;
 
 var correct = "";
 
-var f = 0;
-
-var b = 0;
-
-var a = 0;
+var n = 0; //Next page variable
 
 var c = 0; //Correct answers tracker
 
@@ -27,11 +23,12 @@ var answers = { "rowA": ["Old School", "A Night at the Roxburry", "Talladega Nig
 var correct = { "answers": ["Anchorman", "Zoolander", "Talladega Nights", "Step Brothers", "Other Guys", "Elf"] };
 
 var notify = { "c": "Correct!", "w": "Wrong! it was" };
+//Notifies results after user input
 
 var result = { "s": [$('#result1'), $('#result2'), $('#result3'), $('#result4'), $('#result5'), $('#result6')], "m": [$('#movie1'), $('#movie2'), $('#movie3'), $('#movie4'), $('#movie5'), $('#movie6')] };
+//Pushes results to specific gif page
 
-
-function decreaseGifCounter() {
+function decreaseGifCounter() { //Counts down the Gif Page
 
     gifTime = setInterval(function () {
 
@@ -39,10 +36,10 @@ function decreaseGifCounter() {
         console.log(gifCounter);
 
         if (gifCounter < 1){
-            f++;
+            n++; //Adds 1 to next page variable 
         }
 
-        if (gifCounter == 0) {
+        if (gifCounter == 0) { //Hides gif pages, shows formPage, clears interval, and lets' user know they ran out of time
             formPage();
             $('#gifOne').hide();
             $("#gifTwo").hide();
@@ -50,17 +47,12 @@ function decreaseGifCounter() {
             $("#gifFour").hide();
             $("#gifFive").hide();
             $("#gifSix").hide();
-            // a++;
             
             clearInterval(gifTime);
-            result.s[f].text("Out of time! it was");
-            result.m[f].text(correct.answers[f]);
-            //^^^aa
+            result.s[n].text("Out of time! it was");
+            result.m[n].text(correct.answers[n]);
             counter = 30;
         }
-        // else if (gifCounter == 0 && b == 6){
-        // b++;
-        // }
     }, 1000)
 
 }
@@ -72,147 +64,70 @@ function formTimer() {
         $('#formTime').text(counter);
 
         if (counter == 0) {
-            u++;
-
-            a++;
-            // f++;
-            $('#unanswered').text(u);
-            clearInterval(timer);
-            gifPage();
-            gifCounter = 5;
+            u++; //Tracks unanswerd questions
+            $('#unanswered').text(u); //Writes unanswered question score to page
+            clearInterval(timer); //Stops timer
+            gifPage(); //Goes to gif page
+            gifCounter = 5; //resets gif timer
 
         }
     }, 1000)
 }
-function gifPage() {
-    // b++;
-    // f++;
-    counter = 35;
+function gifPage() { //Each sequence goes starts the form timer, shows th gif page, and hides the form page depending on the value of n 
+    counter = 35; //Resets form page timer to 35 because gif Page is 35 seconds
 
     decreaseGifCounter();
-    if (f == 0) {
+    if (n == 0) {
         formTimer();
         $('#gifOne').show();
         $('#form').hide();
 
     }
-    // if (b == 1 && counter == 0){
-    //     formTimer();
-    //     $('#gifOne').show();
-    //     $('#form').hide();
-    //     result.s[0].text("Out of time! it was");
-    //     result.m[0].text(correct.answers[0]);
-    // }
-    if (f == 1) {
-        //b^^^^
-        gifCounter = 8;
-        counter = 38;
+    if (n == 1) {
+        gifCounter = 8; //Set Gif Counter to 8 because this gif is longer than the oters
+        counter = 38; //38 Seconds to make up for the longer gif in this sequence
         formTimer();
         $("#gifTwo").show();
         $('#form').hide();
     }
-    // if (b == 2 && counter == 0){
-    //     formTimer();
-    //     $('#gifOne').show();
-    //     $('#form').hide();
-    //     result.s[1].text("Out of time! it was");
-    //     result.m[1].text(correct.answers[1]);
-
-    // } 
-    if (f == 2) {
+    if (n == 2) {
         formTimer();
         $("#gifThree").show();
         $('#form').hide();
 
     }
-    // if (b == 3 && counter == 0){
-    //     formTimer();
-    //     $('#gifOne').show();
-    //     $('#form').hide();
-    //     result.s[2].text("Out of time! it was");
-    //     result.m[2].text(correct.answers[2]);
-
-    // } 
-    if (f == 3) {
+    if (n == 3) {
         formTimer();
         $("#gifFour").show();
         $('#form').hide();
 
     }
-    // if (b == 4 && counter == 0){
-    //     formTimer();
-    //     $('#gifOne').show();
-    //     $('#form').hide();
-    //     result.s[3].text("Out of time! it was");
-    //     result.m[3].text(correct.answers[3]);
-
-    // } 
-    if (f == 4) {
+    if (n == 4) {
         formTimer();
         $("#gifFive").show();
         $('#form').hide();
 
     }
-    // if (b == 5 && counter == 0){
-    //     formTimer();
-    //     $('#gifOne').show();
-    //     $('#form').hide();
-    //     result.s[4].text("Out of time! it was");
-    //     result.m[4].text(correct.answers[4]);
-
-    // } 
-    if (f == 5) {
+    if (n == 5) {
         $("#gifSix").show();
         $('#form').hide();
     }
-    // }
-    // if (b == 4 && counter == 0){
-    //     formTimer();
-    //     $('#gifOne').show();
-    //     $('#form').hide();
-    //     result.s[5].text("Out of time! it was");
-    //     result.m[5].text(correct.answers[5]);
 }
 
-function formPage() {
-    if (f == 6) {
+function formPage() { //Creates the questions and answers in buttons and also shows form page
+    if (n == 6) { //This starts the finish page sequence and resets form page coutner to 30
         $("#finishPage").show();
         $('#form').hide();
         counter = 30;
     } else {
-        // formTimer();
-        $('#question').text(question.s[f]);
+        $('#question').text(question.s[n]);
         $('#form').show();
-        $("input[data-type='answer1']").val(answers.rowA[f]);
-        $("input[data-type='answer2']").val(answers.rowB[f]);
-        $("input[data-type='answer3']").val(answers.rowC[f]);
-        $("input[data-type='answer4']").val(answers.rowD[f]);
+        $("input[data-type='answer1']").val(answers.rowA[n]);
+        $("input[data-type='answer2']").val(answers.rowB[n]);
+        $("input[data-type='answer3']").val(answers.rowC[n]);
+        $("input[data-type='answer4']").val(answers.rowD[n]);
     }
 };
-
-$(document).ready(function () {
-
-    $("#startPage").show();
-
-    $("#form").hide();
-    $("#gifOne").hide();
-
-
-    $("#gifTwo").hide();
-
-
-    $("#gifThree").hide();
-
-
-    $("#gifFour").hide();
-
-
-    $("#gifFive").hide();
-
-
-    $("#gifSix").hide();
-
-    $("#finishPage").hide();
 
     $("input[type='button']").on('click', function () {
 
@@ -229,13 +144,11 @@ $(document).ready(function () {
 
             event.preventDefault();
         }
-        else if ($(this).attr('data-type') == 'restart') {
-            f = 0;
-            b = 0;
-            a = 0;
-            c = 0; //Correct answers tracker
-            w = 0; //Wrong answers tracker
-            u = 0;
+        else if ($(this).attr('data-type') == 'restart') { //Reset page
+            n = 0; //Reset next page tracker
+            c = 0; //Reset correct answers tracker
+            w = 0; //Reset wrong answers tracker
+            u = 0; //Reset unanswered answers
             counter = 30;
             $("#finishPage").hide();
             $('#form').show();
@@ -244,32 +157,24 @@ $(document).ready(function () {
         }
         else {
 
-            if ($(this).attr('value') == correct.answers[f]) {  //If user gets answer correct
-                result.s[f].text(notify.c);
-                //a^^^and down
-                result.m[f].text(correct.answers[f]);
-                // f++;
+            if ($(this).attr('value') == correct.answers[n]) {  //If user gets answer correct
+                result.s[n].text(notify.c);
+                result.m[n].text(correct.answers[n]);
                 clearInterval(timer);
-                // counter = 35;
                 gifCounter = 5;
                 $('#formTime').text(counter);
                 gifPage();
-                b++;
                 c++;
                 $('#correct').text(c);
             }
 
-            if ($(this).attr('value') != correct.answers[f]) { //If user gets answer wrong
-                result.s[f].text(notify.w);
-                //a^^^and down
-                result.m[f].text(correct.answers[f]);
-                // f++;
+            if ($(this).attr('value') != correct.answers[n]) { //If user gets answer wrong
+                result.s[n].text(notify.w);
+                result.m[n].text(correct.answers[n]);
                 clearInterval(timer);
                 gifPage();
-                // counter = 35;
                 gifCounter = 5;
                 $('#formTime').text(counter);
-                // b++;
                 w++
                 $('#wrong').text(w);
             }
@@ -278,4 +183,27 @@ $(document).ready(function () {
         }
     })
 
+    $(document).ready(function () { //Hides the form page and all the gif pages, but on only shows start page when the html loads
+
+        $("#startPage").show();
+    
+        $("#form").hide();
+        $("#gifOne").hide();
+    
+    
+        $("#gifTwo").hide();
+    
+    
+        $("#gifThree").hide();
+    
+    
+        $("#gifFour").hide();
+    
+    
+        $("#gifFive").hide();
+    
+    
+        $("#gifSix").hide();
+    
+        $("#finishPage").hide();
 })
