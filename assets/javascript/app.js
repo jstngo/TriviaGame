@@ -6,8 +6,6 @@ var timer;
 
 var gifTimer;
 
-var correct = "";
-
 var n = 0; //Next page variable
 
 var c = 0; //Correct answers tracker
@@ -16,10 +14,13 @@ var w = 0; //Wrong answers tracker
 
 var u = 0; //Unanswered tracker
 
+//Questions
 var question = { "s": ["This burrito is delicious but it is filling", "Todd, where's my goddamn latte!?", "Help me Jesus, help me Jewish God, help me Allah, HELP ME TOM CRUISE", "I swear, I'm so pissed off at my mom. As soon as she's of age, I'm putting her in a home.", "Maybe we should call ourselves the febreeze brothers because things are feeling so fresh right now", "I'm in a store, and I'm singing"] };
 
+//Possible answers
 var answers = { "rowA": ["Old School", "A Night at the Roxburry", "Talladega Nights", "Blades of Glory", "Other Guys", "Get Hard"], "rowB": ["Anchorman", "Lego Movie", "Kicking and Screaming", "Land of the Lost", "Megamind", "Elf"], "rowC": ["Get Hard", "Everything Must Go", "The Campaign", "Step Brothers", "Stranger than Fiction", "Kicking and Screaming"], "rowD": ["Blades of Glory", "Zoolander", "Casa Padre", "Semi-Pro", "Austin Powers", "Lego Movie 2"] };
 
+//Correct answers
 var correct = { "answers": ["Anchorman", "Zoolander", "Talladega Nights", "Step Brothers", "Other Guys", "Elf"] };
 
 var notify = { "c": "Correct!", "w": "Wrong! it was" };
@@ -158,25 +159,23 @@ function formPage() { //Creates the questions and answers in buttons and also sh
         else {
 
             if ($(this).attr('value') == correct.answers[n]) {  //If user gets answer correct
-                result.s[n].text(notify.c);
-                result.m[n].text(correct.answers[n]);
-                clearInterval(timer);
-                gifCounter = 5;
-                $('#formTime').text(counter);
-                gifPage();
-                c++;
-                $('#correct').text(c);
+                result.s[n].text(notify.c); //Lets user know they got the correct answer
+                result.m[n].text(correct.answers[n]); //Lets user know which movie
+                clearInterval(timer); //Stops timer
+                gifCounter = 5; //Resets gif timer
+                gifPage(); //Goes to gif page
+                c++; //Adds correct points to variable
+                $('#correct').text(c); //Writes to finish page
             }
 
             if ($(this).attr('value') != correct.answers[n]) { //If user gets answer wrong
-                result.s[n].text(notify.w);
-                result.m[n].text(correct.answers[n]);
-                clearInterval(timer);
-                gifPage();
-                gifCounter = 5;
-                $('#formTime').text(counter);
-                w++
-                $('#wrong').text(w);
+                result.s[n].text(notify.w); //Lets user know they got the wrong answer
+                result.m[n].text(correct.answers[n]); //Lets user know which movie
+                clearInterval(timer); //Stops timer
+                gifPage(); //Resets gif timer
+                gifCounter = 5; //Resets gif timer
+                w++ //Adds wrong points to variable
+                $('#wrong').text(w); //Writes to finish page
             }
 
             event.preventDefault();
