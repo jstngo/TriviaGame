@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" result="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Document</title>
@@ -18,9 +18,9 @@
 </div>
         
 <p></p>
-<form id="one">
+<form id="form">
         <p>Time Remaining: <span id="formTime">30 Seconds</span></p>
-    <p>"This burrito is delicious but it is filling"</p>
+    <p id="question"></p>
     <br>
     <input type="button" data-type="answer1" data="options" value=""><br>
     <input type="button" data-type="answer2" data="options" value=""><br>
@@ -29,86 +29,54 @@
 </form>
 
 <div id="gifOne">
-    <p id="content"></p>
+    <p id="result1"></p>
+    <p id="movie1"></p>
     <img src="assets/images/Anchorman.gif">
 
 </div>
 
-<!-- <form id="two">
-        <p>Time Remaining: <span id="timerTwo">30 Seconds</span></p>
-    <p>"Todd, where's my goddamn latte!?"</p>
-    <br>
-    <input type="button" data-type="wrong" value="A Night at the Roxburry"><br>
-    <input type="button" data-type="correct" value="Zoolander"><br>
-    <input type="button" data-type="wrong" value="Everything Must Go"><br>  
-    <input type="button" data-type="wrong" value="Lego Movie"><br> 
-</form> -->
     <div id="gifTwo">
-        <p id="content"></p>
+        <p id="result2"></p>
+         <p id="movie2"></p>
         <img src="assets/images/Zoolander.gif">
             
     </div>
 
-<!-- <form id="three">
-        <p>Time Remaining: <span>30 Seconds</span></p>
-    <p>"Help me Jesus, help me Jewish God, help me Allah, HELP ME TOM CRUISE"</p>
-    <br>  
-    <input type="button" data-type="wrong" value="Kicking and Screaming"><br>
-    <input type="button" data-type="correct" value="Talladega Nights"><br>
-    <input type="button" data-type="wrong" value="The Campaign"><br>  
-    <input type="button" data-type="wrong" value="Casa Padre"><br> 
-</form> -->
     <div id="gifThree">
-        <p id="content"></p>
+        <p id="result3"></p>
+         <p id="movie3"></p>
         <img src="assets/images/Talladega-Nights.gif">
                 
     </div>
 
-<!-- <form id="four">
-        <p>Time Remaining: <span>30 Seconds</span></p>
-    <p>"I swear, I'm so pissed off at my mom. As soon as she's of age, I'm putting her in a home."</p>
-    <br>            
-    <input type="button" data-type="wrong" data="options" value="Blades of Glory"><br>
-    <input type="button" data-type="correct" data="options" value="Step Brothers"><br>
-    <input type="button" data-type="wrong" data="options" value="Land of the Lost"><br>  
-    <input type="button" data-type="wrong" data="options" value="Semi-Pro"><br> 
-</form> -->
     <div id="gifFour">
-        <p id="content"></p>
+        <p id="result4"></p>
+         <p id="movie4"></p>
         <img src="assets/images/Step-Brothers.gif">
                     
     </div>
 
-<!-- <form id="five">
-        <p>Time Remaining: <span>30 Seconds</span></p>
-    <p>"Maybe we should call ourselves the febreeze brothers because things are feeling so fresh right now"</p>           
-    <br>
-    <input type="button" data-type="wrong" data="options" value="Megamind"><br>
-    <input type="button" data-type="correct" data="options" value="Other Guys"><br>
-    <input type="button" data-type="wrong" data="options" value="Stranger than Fiction"><br>  
-    <input type="button" data-type="wrong" data="options" value="Austin Powers"><br> 
-</form> -->
     <div id="gifFive">
-        <p id="content"></p>
+        <p id="result5"></p>
+         <p id="movie5"></p>
         <img src="assets/images/The-Other-Guys.gif">
         
     </div>
 
-<!-- <form id="six">
-        <p>Time Remaining: <span>30 Seconds</span></p>
-    <p>"I'm in a store, and I'm singing"</p>
-    <br>
-    <input type="button" data-type="wrong" value="Get Hard"><br>
-    <input type="button" data-type="correct" value="Elf"><br>
-    <input type="button" data-type="wrong" value="Kicking and Screaming"><br>  
-    <input type="button" data-type="wrong" value="Lego Movie 2"><br> 
-</form> -->
     <div id="gifSix">
-        <p id="content"></p>
+        <p id="result6"></p>
+         <p id="movie6"></p>
         <img src="assets/images/Elf.gif">
             
     </div>
-
+<div id="finishPage">
+    <h1>All done! Heres how you done</h1>
+    <p>Correct answers: <span id="correct">0</span></p>
+    <p>Wrong answers: <span id="wrong">0</span></p>
+    <p>Unanswered: <span id="unanswered">0</span></p>
+    <p>Try again?</p>
+    <input type="button" data-type="restart" value="RESTART">
+</div>
 </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/app.js"></script>
