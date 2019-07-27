@@ -38,6 +38,10 @@ function decreaseGifCounter() {
         gifCounter--;
         console.log(gifCounter);
 
+        if (gifCounter < 1){
+            f++;
+        }
+
         if (gifCounter == 0) {
             formPage();
             $('#gifOne').hide();
@@ -46,9 +50,13 @@ function decreaseGifCounter() {
             $("#gifFour").hide();
             $("#gifFive").hide();
             $("#gifSix").hide();
-            a++;
+            // a++;
+            
             clearInterval(gifTime);
-
+            result.s[f].text("Out of time! it was");
+            result.m[f].text(correct.answers[f]);
+            //^^^aa
+            counter = 30;
         }
         // else if (gifCounter == 0 && b == 6){
         // b++;
@@ -67,7 +75,7 @@ function formTimer() {
             u++;
 
             a++;
-            f++;
+            // f++;
             $('#unanswered').text(u);
             clearInterval(timer);
             gifPage();
@@ -78,10 +86,11 @@ function formTimer() {
 }
 function gifPage() {
     // b++;
+    // f++;
     counter = 35;
 
     decreaseGifCounter();
-    if (b == 0) {
+    if (f == 0) {
         formTimer();
         $('#gifOne').show();
         $('#form').hide();
@@ -94,7 +103,8 @@ function gifPage() {
     //     result.s[0].text("Out of time! it was");
     //     result.m[0].text(correct.answers[0]);
     // }
-    if (b == 1) {
+    if (f == 1) {
+        //b^^^^
         gifCounter = 8;
         counter = 38;
         formTimer();
@@ -109,7 +119,7 @@ function gifPage() {
     //     result.m[1].text(correct.answers[1]);
 
     // } 
-    if (b == 2) {
+    if (f == 2) {
         formTimer();
         $("#gifThree").show();
         $('#form').hide();
@@ -123,7 +133,7 @@ function gifPage() {
     //     result.m[2].text(correct.answers[2]);
 
     // } 
-    if (b == 3) {
+    if (f == 3) {
         formTimer();
         $("#gifFour").show();
         $('#form').hide();
@@ -137,7 +147,7 @@ function gifPage() {
     //     result.m[3].text(correct.answers[3]);
 
     // } 
-    if (b == 4) {
+    if (f == 4) {
         formTimer();
         $("#gifFive").show();
         $('#form').hide();
@@ -151,7 +161,7 @@ function gifPage() {
     //     result.m[4].text(correct.answers[4]);
 
     // } 
-    if (b == 5) {
+    if (f == 5) {
         $("#gifSix").show();
         $('#form').hide();
     }
@@ -165,7 +175,7 @@ function gifPage() {
 }
 
 function formPage() {
-    if (b == 6) {
+    if (f == 6) {
         $("#finishPage").show();
         $('#form').hide();
         counter = 30;
@@ -234,12 +244,13 @@ $(document).ready(function () {
         }
         else {
 
-            if ($(this).attr('value') == correct.answers[a]) {  //If user gets answer correct
-                result.s[a].text(notify.c);
-                result.m[a].text(correct.answers[a]);
-                f++;
+            if ($(this).attr('value') == correct.answers[f]) {  //If user gets answer correct
+                result.s[f].text(notify.c);
+                //a^^^and down
+                result.m[f].text(correct.answers[f]);
+                // f++;
                 clearInterval(timer);
-                counter = 35;
+                // counter = 35;
                 gifCounter = 5;
                 $('#formTime').text(counter);
                 gifPage();
@@ -248,16 +259,17 @@ $(document).ready(function () {
                 $('#correct').text(c);
             }
 
-            if ($(this).attr('value') != correct.answers[a]) { //If user gets answer wrong
-                result.s[a].text(notify.w);
-                result.m[a].text(correct.answers[a]);
-                f++;
+            if ($(this).attr('value') != correct.answers[f]) { //If user gets answer wrong
+                result.s[f].text(notify.w);
+                //a^^^and down
+                result.m[f].text(correct.answers[f]);
+                // f++;
                 clearInterval(timer);
                 gifPage();
-                counter = 35;
+                // counter = 35;
                 gifCounter = 5;
                 $('#formTime').text(counter);
-                b++;
+                // b++;
                 w++
                 $('#wrong').text(w);
             }
